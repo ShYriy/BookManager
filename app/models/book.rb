@@ -3,6 +3,6 @@ class Book < ApplicationRecord
   belongs_to :binding_type
 
   validates :title, presence: true, length: { minimum: 2 }
-  validates :pages, presence: true
-  validates :stoc_balance, presence: true
+  validates :pages_count, presence: true
+  validates :stock_balance, presence: true
 end
