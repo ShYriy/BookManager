@@ -1,23 +1,23 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = collection
   end
 
   def show
-    @book = Book.find_by id: params[:id]
+    @book = collection.find params[:id]
   end
 
   def new
-    @book = Book.new
+    @book = collection.new
   end
 
   def edit
-    @book = Book.find_by id: params[:id]
+    @book = collection.find params[:id]
   end
 
   def update
-    @book = Book.find_by id: params[:id]
-    if @book.update book_params
+    @book = collection.find params[:id]
+    if resource.update permitted_params
       redirect_to books_path
     else
       render :edit
@@ -25,13 +25,13 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find_by id: params[:id]
+    @book = collection.find params[:id]
     @book.destroy
     redirect_to books_path
   end
 
   def create
-    @book = Book.new movie_params
+    @book = collection.new permitted_params
     if @book.save
       redirect_to books_path
     else
@@ -41,7 +41,15 @@ class BooksController < ApplicationController
 
   private
 
-  def book_params
+  def collection
+    Book.all
+  end
+
+  def resource
+    collection.find(params[:id])
+  end
+
+  def permitted_params
     params.require(:book).permit(:title)  # author ?
   end
 end
