@@ -1,0 +1,12 @@
+%h1 Books
+- @books.each do |book|
+  %h2= book.title
+  %p
+    = book.author
+  %p
+    = book.binding_type
+  %p
+    = book.pages
+  %p
+    = book.print_date
+    

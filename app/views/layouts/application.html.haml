@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %title BookManager
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+  %body
+    %nav
+      %ul
+        %li= link_to 'Main', root_path
+        %li= link_to 'Books', books_path
+    %main= yield
+    
