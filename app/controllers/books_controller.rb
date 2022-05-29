@@ -42,6 +42,16 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def take_book
+    @book = Book.find params[:id]
+    TakeBookService.new(book: @book, user: User.first).call
+  end
+
+  def return_book
+    @book = Book.find params[:id]
+    ReturnBookService.new(book: @book, user: User.first).call
+  end
+
   private
 
   # def collection
