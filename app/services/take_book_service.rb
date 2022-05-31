@@ -5,7 +5,7 @@ class TakeBookService
   end
 
   def call
-    @book.stock_balance += 1
+    @book.stock_balance -= 1
     @user
   end
 end

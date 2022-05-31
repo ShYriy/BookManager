@@ -44,12 +44,15 @@ class BooksController < ApplicationController
 
   def take_book
     @book = Book.find params[:id]
-    TakeBookService.new(book: @book, user: User.first).call
+    TakeBookService.new(book: @book, user: User.find(@book.user_id)).call  # ?
+    #  @book.update() ?
+    redirect_to books_path
   end
 
   def return_book
     @book = Book.find params[:id]
-    ReturnBookService.new(book: @book, user: User.first).call
+    ReturnBookService.new(book: @book, user: find(@book.user_id)).call  # ?
+    redirect_to books_path
   end
 
   private
