@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_policy (0.6.1)
+      ruby-next-core (>= 0.14.0)
     actioncable (7.0.3)
       actionpack (= 7.0.3)
       activesupport (= 7.0.3)
@@ -214,6 +216,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    ruby-next-core (0.15.1)
     rubyzip (2.3.2)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
@@ -258,6 +261,7 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
+  action_policy
   bcrypt (~> 3.1.7)
   bootsnap
   capybara
