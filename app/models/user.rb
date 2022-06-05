@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :registerable,
          :recoverable,
          :rememberable,
-         :confirmable,
+         # :confirmable,
          :validatable
 
   has_many :books
