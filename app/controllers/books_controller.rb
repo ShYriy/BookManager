@@ -1,11 +1,11 @@
 class BooksController < ApplicationController
-  # before_action :authenticate_user!          ?
   def index
     authorize!
     @books = Book.all
   end
 
   def show
+    authorize! @book
     @book = Book.find params[:id]
   end
 
@@ -14,7 +14,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    authorize!
+    authorize! @book
     @book = Book.new permitted_params
     if @book.save
       redirect_to books_path
@@ -24,12 +24,13 @@ class BooksController < ApplicationController
   end
 
   def edit
+    authorize! @book
     @book = Book.find params[:id]
   end
 
   def update
     @book = Book.find params[:id]
-    authorize!
+    authorize! @book
     if @book.update permitted_params
       redirect_to books_path
     else
@@ -38,6 +39,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    authorize! @book
     @book = Book.find params[:id]
     @book.destroy
     redirect_to books_path
@@ -45,14 +47,13 @@ class BooksController < ApplicationController
 
   def take_book
     @book = Book.find params[:id]
-    TakeBookService.new(book: @book, user: User.find(@book.user_id)).call  # ?
-    #  @book.update() ?
+    TakeBookService.new(book: @book, user: current_user).call
     redirect_to books_path
   end
 
   def return_book
     @book = Book.find params[:id]
-    ReturnBookService.new(book: @book, user: find(@book.user_id)).call  # ?
+    ReturnBookService.new(book: @book, user: current_user).call
     redirect_to books_path
   end
 

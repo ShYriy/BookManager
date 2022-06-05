@@ -1,16 +1,16 @@
 class BookPolicy < ApplicationPolicy
   # See https://actionpolicy.evilmartians.io/#/writing_policies
-  #
+
   def index?
     true
   end
-  #
+
   def update?
     user.admin?
   end
 
   def create?
-    user.admin?
+    update?
   end
 
   # Scoping
