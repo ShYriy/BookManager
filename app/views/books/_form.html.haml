@@ -1,0 +1,5 @@
+= form_with model: @book do |f|
+  %div
+    = f.label :title
+    = f.text_field :title, required: true, minlength: 2, placeholder: 'Title'
+  = f.submit "Submit!"
