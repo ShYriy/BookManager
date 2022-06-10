@@ -1,5 +1,21 @@
+= render 'shared/errors', object: @book
+
 = form_with model: @book do |f|
-  %div
-    = f.label :title
-    = f.text_field :title, required: true, minlength: 2, placeholder: 'Title'
-  = f.submit "Submit!"
+  %div.mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :title
+    .col-sm-10
+      = f.text_field :title, class: 'form-control', required: true, minlength: 2, placeholder: 'Title'
+  %br
+  %div.mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :pages_count
+    .col-sm-10
+      = f.number_field :pages_count, class: 'form-control', required: true, minlength: 2, placeholder: 'pages_count'
+  %br
+  %div.mb-3.row
+    .col-sm-2.col-form-label
+      = f.label :stock_balance
+    .col-sm-10
+      = f.number_field :stock_balance, class: 'form-control', required: true, placeholder: 'stock_balance'
+  = f.submit "Submit!", class: 'btn btn-primary'
