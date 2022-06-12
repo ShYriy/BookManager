@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
   def create
     # authorize! @book
-    @book = Book.new permitted_params
+    @book = current_user.books.build(permitted_params)
     if @book.save
       flash[:success] = 'Book created!'
       redirect_to books_path
