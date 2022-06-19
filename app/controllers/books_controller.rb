@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   def index
-    # authorize!
+    authorize!
     @books = Book.all
   end
 
   def show
-    # authorize! @book
     @book = Book.find params[:id]
+    authorize! @book
   end
 
   def new
@@ -14,10 +14,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    # authorize! @book
     @book = current_user.books.build(permitted_params)
+    authorize! @book
     if @book.save
-      flash[:success] = 'Book created!'
+      flash[:notice] = 'Book created!'
       redirect_to books_path
     else
       render :new
@@ -25,15 +25,15 @@ class BooksController < ApplicationController
   end
 
   def edit
-    # authorize! @book
     @book = Book.find params[:id]
+    authorize! @book
   end
 
   def update
     @book = Book.find params[:id]
-    # authorize! @book
+    authorize! @book
     if @book.update permitted_params
-      flash[:success] = 'Book updated!'
+      flash[:notice] = 'Book updated!'
       redirect_to books_path
     else
       render :edit
@@ -41,10 +41,10 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    # authorize! @book
     @book = Book.find params[:id]
+    authorize! @book
     @book.destroy
-    flash[:success] = 'Book deleted!'
+    flash[:notice] = 'Book deleted!'
     redirect_to books_path
   end
 
@@ -60,7 +60,14 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  rescue_from ActionPolicy::Unauthorized, with: :user_not_authorized   # ???
+
   private
+
+  def user_not_authorized                                              # ???
+    flash[:error] = 'Not autorized!'
+    redirect_to(request.referer || root_path)
+  end
 
   # def collection
   #   Book.all
@@ -71,6 +78,11 @@ class BooksController < ApplicationController
   # end
 
   def permitted_params
-    params.require(:book).permit(:title, :pages_count, :stock_balance)  # author ?
+    params.require(:book).permit(
+      :title,
+      :pages_count,
+      :stock_balance,
+      author_ids: []
+    )
   end
 end

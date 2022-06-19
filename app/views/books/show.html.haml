@@ -4,6 +4,6 @@
   = @book.title
 %p.lead.my-3
   = @book.authors.name
-= link_to 'Show', book_path(@book), class: 'btn btn-primary'
-= link_to 'Edit', edit_book_path(@book), class: 'btn btn-secondary'
-= link_to 'Destroy', book_path(@book), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'}
+= link_to 'Show', book_path(@book), class: 'btn btn-primary btn-sm'
+= link_to 'Edit', edit_book_path(@book), class: 'btn btn-secondary btn-sm'
+= link_to 'Destroy', book_path(@book), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'}
