@@ -28,6 +28,8 @@ gem "action_policy"
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+gem 'haml-rails', '~> 2.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

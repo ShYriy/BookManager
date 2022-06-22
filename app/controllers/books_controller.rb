@@ -1,11 +1,11 @@
 class BooksController < ApplicationController
   def index
-    authorize!
+    # authorize!
     @books = Book.all
   end
 
   def show
-    authorize! @book
+    # authorize! @book
     @book = Book.find params[:id]
   end
 
@@ -14,9 +14,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    authorize! @book
-    @book = Book.new permitted_params
+    # authorize! @book
+    @book = current_user.books.build(permitted_params)
     if @book.save
+      flash[:success] = 'Book created!'
       redirect_to books_path
     else
       render :new
@@ -24,14 +25,15 @@ class BooksController < ApplicationController
   end
 
   def edit
-    authorize! @book
+    # authorize! @book
     @book = Book.find params[:id]
   end
 
   def update
     @book = Book.find params[:id]
-    authorize! @book
+    # authorize! @book
     if @book.update permitted_params
+      flash[:success] = 'Book updated!'
       redirect_to books_path
     else
       render :edit
@@ -39,9 +41,10 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    authorize! @book
+    # authorize! @book
     @book = Book.find params[:id]
     @book.destroy
+    flash[:success] = 'Book deleted!'
     redirect_to books_path
   end
 
@@ -68,6 +71,6 @@ class BooksController < ApplicationController
   # end
 
   def permitted_params
-    params.require(:book).permit(:title)  # author ?
+    params.require(:book).permit(:title, :pages_count, :stock_balance)  # author ?
   end
 end
