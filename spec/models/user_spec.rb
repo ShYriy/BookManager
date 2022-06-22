@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to have_many :books }
+
+  it { is_expected.to validate_presence_of :email }
+
+  it { is_expected.to define_enum_for(:role).with_values(user: 1, admin: 2, consumer: 3) }
 end
