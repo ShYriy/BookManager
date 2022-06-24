@@ -1,9 +1,14 @@
 %h1.mb-4
   = @book.title
 %p.lead.my-3
+  Title:
   = @book.title
 %p.lead.my-3
-  = @book.authors.name
+  Author:
+  = @book.authors.map{ |author| author.name }.join(', ')
+%p.lead.my-3
+  Pages count:
+  = @book.pages_count
 = link_to 'Show', book_path(@book), class: 'btn btn-primary btn-sm'
 = link_to 'Edit', edit_book_path(@book), class: 'btn btn-secondary btn-sm'
 = link_to 'Destroy', book_path(@book), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'}

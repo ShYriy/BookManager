@@ -1,20 +1,4 @@
 %h1.mb-4 Books
 = link_to 'New book', new_book_path, class: 'btn btn-primary btn-sm'
-- @books.each do |book|
-  %article.card.mt-3
-    .card-body
-      %h4
-        = book.title
-        %section.card-text
-          %p.my-2
-            = book.authors.map{ |author| author.name }.join(', ')
-          %p.my-2
-            = book.cover
-          %p.my-2
-            = book.pages_count
-          %p.my-2
-            = book.print_date
-          %br
-        = link_to 'Show', book_path(book), class: 'btn btn-primary btn-sm'
-        = link_to 'Edit', edit_book_path(book), class: 'btn btn-secondary btn-sm'
-        = link_to 'Destroy', book_path(book), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'}
+= render @books
+  

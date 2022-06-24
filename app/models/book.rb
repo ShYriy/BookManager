@@ -1,4 +1,4 @@
-class Book < ApplicationRecord
+class Book < Item
   has_and_belongs_to_many :authors
   belongs_to :user
 

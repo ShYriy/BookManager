@@ -13,9 +13,11 @@
 # it.
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-
+require 'rubygems'
 require 'factory_bot_rails'
 require 'factory_bot'
+require 'devise'
+require 'rails/all'
 # require 'rspec/rails'
 # require "action_policy/rspec"
 
@@ -23,9 +25,12 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
-  # config.include Devise::Test::ControllerHelpers, type: :controller
-  # config.include Devise::Test::IntegrationHelpers, type: :request
-  # config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :view
+  
+  config.include Warden::Test::Helpers
+  config.include Devise::TestHelpers, type: :request
 
   config.include FactoryBot::Syntax::Methods
   

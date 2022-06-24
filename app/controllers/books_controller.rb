@@ -60,11 +60,9 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
-  rescue_from ActionPolicy::Unauthorized, with: :user_not_authorized   # ???
-
   private
 
-  def user_not_authorized                                              # ???
+  def user_not_authorized
     flash[:error] = 'Not autorized!'
     redirect_to(request.referer || root_path)
   end
