@@ -47,6 +47,8 @@ gem "bootsnap"
 
 gem "simple_form"
 
+# gem 'rexml', '~> 3.2', '>= 3.2.5'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
