@@ -6,6 +6,9 @@
       = f.input :title
       = f.input :pages_count
       = f.input :stock_balance
+      = f.input :print_date
+      = f.label :cover
+      = f.select :cover, Book.covers.keys
       = f.association :authors# , as: :check_boxes 
       %br
       = f.submit "Submit!", class: 'btn btn-primary btn-sm'

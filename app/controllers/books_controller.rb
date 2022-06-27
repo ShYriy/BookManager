@@ -80,6 +80,8 @@ class BooksController < ApplicationController
       :title,
       :pages_count,
       :stock_balance,
+      :print_date,
+      :cover,
       author_ids: []
     )
   end

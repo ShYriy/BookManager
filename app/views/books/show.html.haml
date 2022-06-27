@@ -9,6 +9,12 @@
 %p.lead.my-3
   Pages count:
   = @book.pages_count
+%p.lead.my-3
+  Print date:
+  = @book.print_date
+%p.lead.my-3
+  Cover:
+  = @book.cover
 = link_to 'Show', book_path(@book), class: 'btn btn-primary btn-sm'
 = link_to 'Edit', edit_book_path(@book), class: 'btn btn-secondary btn-sm'
 = link_to 'Destroy', book_path(@book), class: 'btn btn-danger btn-sm', data: {method: :delete, confirm: 'Are you sure?'}

@@ -8,5 +8,5 @@ RSpec.describe Book, type: :model do
     it { is_expected.to eq 100 }
   end
 
-  # it { is_expected.to define_enum_for(:cover).with_values(hard: 1, soft: 2) }
+  it { is_expected.to define_enum_for(:cover).with_values(hard: 1, soft: 2) }
 end
