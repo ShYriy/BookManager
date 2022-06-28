@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_02_090132) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_27_133420) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors_books", id: false, force: :cascade do |t|
-    t.integer "book_id"
+  create_table "authors_items", id: false, force: :cascade do |t|
+    t.integer "item_id"
     t.integer "author_id"
-    t.index ["author_id"], name: "index_authors_books_on_author_id"
-    t.index ["book_id"], name: "index_authors_books_on_book_id"
+    t.index ["author_id"], name: "index_authors_items_on_author_id"
+    t.index ["item_id"], name: "index_authors_items_on_item_id"
   end
 
-  create_table "books", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,7 +32,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_090132) do
     t.integer "stock_balance"
     t.date "print_date"
     t.integer "user_id"
-    t.index ["user_id"], name: "index_books_on_user_id"
+    t.string "type"
+    t.integer "cover"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

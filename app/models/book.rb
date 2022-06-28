@@ -1,7 +1,4 @@
-class Book < ApplicationRecord
-  has_and_belongs_to_many :authors
-  belongs_to :user
-
+class Book < Item
   enum cover: {
     hard: 1,
     soft: 2

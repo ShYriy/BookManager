@@ -5,12 +5,24 @@ class BookPolicy < ApplicationPolicy
     true
   end
 
-  def update?
+  def show?
     user.admin?
   end
 
   def create?
-    update?
+    show?
+  end
+
+  def edit?
+    show?
+  end
+
+  def update?
+    show?
+  end
+
+  def destroy?
+    show?
   end
 
   # Scoping
