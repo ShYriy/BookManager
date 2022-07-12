@@ -1,7 +1,12 @@
 class BooksController < ApplicationController
   def index
     authorize!
-    @books = Book.all
+    # @search = Struct.new(:query, :model_name).new(query: params[:query])
+    if params[:query]
+      @books = Book.search params[:query]
+    else
+      @books = Book.all
+    end
   end
 
   def show

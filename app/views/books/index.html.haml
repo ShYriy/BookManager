@@ -1,4 +1,14 @@
 %h1.mb-4 Books
 = link_to 'New book', new_book_path, class: 'btn btn-primary btn-sm'
-= render @books
+
+-# = simple_form_for @search, url: books_path, remote: true do |s|
+-#   = s.input :query
+-#   = s.submit "Search", class: 'btn btn-primary btn-sm'
+
+= form_tag books_path,remote: true, method: :get do
+  .field
+    = text_field_tag :query, params[:query]
+    = submit_tag "Search", name: nil, class: 'btn btn-primary btn-sm'
+
+#books-list= render @books
   
