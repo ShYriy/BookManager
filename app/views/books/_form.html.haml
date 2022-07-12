@@ -1,21 +1,13 @@
 = render 'shared/errors', object: @book
 
-= form_with model: @book do |f|
+= simple_form_for @book do |f|
   %div.mb-3.row
-    .col-sm-2.col-form-label
-      = f.label :title
-    .col-sm-10
-      = f.text_field :title, class: 'form-control', required: true, minlength: 2, placeholder: 'Title'
-  %br
-  %div.mb-3.row
-    .col-sm-2.col-form-label
-      = f.label :pages_count
-    .col-sm-10
-      = f.number_field :pages_count, class: 'form-control', required: true, minlength: 2, placeholder: 'pages_count'
-  %br
-  %div.mb-3.row
-    .col-sm-2.col-form-label
-      = f.label :stock_balance
-    .col-sm-10
-      = f.number_field :stock_balance, class: 'form-control', required: true, placeholder: 'stock_balance'
-  = f.submit "Submit!", class: 'btn btn-primary'
+    .col-sm-8.col-form
+      = f.input :title
+      = f.input :pages_count
+      = f.input :stock_balance
+      = f.input :print_date
+      = f.input :cover, as: :select, collection: Book.covers.keys
+      = f.association :authors# , as: :check_boxes 
+      %br
+      = f.submit "Submit!", class: 'btn btn-primary btn-sm'

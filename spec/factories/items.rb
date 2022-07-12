@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :binding_type do
+  factory :item do
     
   end
 end

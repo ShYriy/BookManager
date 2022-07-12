@@ -1,20 +1,14 @@
 %h1.mb-4 Books
-= link_to 'New book', new_book_path, class: 'btn btn-primary btn-lg'
-- @books.each do |book|
-  %article.card.mt-3
-    .card-body
-      %h4
-        = book.title
-        %section.card-text
-          %p.my-2
-            = book.authors.name
-          %p.my-2
-            = book.cover
-          %p.my-2
-            = book.pages_count
-          %p.my-2
-            = book.print_date
-          %br
-        = link_to 'Show', book_path(book), class: 'btn btn-primary'
-        = link_to 'Edit', edit_book_path(book), class: 'btn btn-secondary'
-        = link_to 'Destroy', book_path(book), class: 'btn btn-danger', data: {method: :delete, confirm: 'Are you sure?'}
+= link_to 'New book', new_book_path, class: 'btn btn-primary btn-sm'
+
+-# = simple_form_for @search, url: books_path, remote: true do |s|
+-#   = s.input :query
+-#   = s.submit "Search", class: 'btn btn-primary btn-sm'
+
+= form_tag books_path,remote: true, method: :get do
+  .field
+    = text_field_tag :query, params[:query]
+    = submit_tag "Search", name: nil, class: 'btn btn-primary btn-sm'
+
+#books-list= render @books
+  

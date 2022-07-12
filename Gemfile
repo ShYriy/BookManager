@@ -30,6 +30,10 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 
 gem 'haml-rails', '~> 2.0'
 
+gem 'mysql2',          '~> 0.4'
+
+gem 'thinking-sphinx', '~> 5.4'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -43,7 +47,11 @@ gem "bcrypt", "~> 3.1.7"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem "bootsnap"
+
+gem "simple_form"
+
+# gem 'rexml', '~> 3.2', '>= 3.2.5'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
