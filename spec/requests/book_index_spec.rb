@@ -10,11 +10,11 @@ RSpec.describe "BookIndex", type: :request do
   # end
 
   describe "book index" do
-    let(:book) {create(:book, title: 'Test Book')}
-    ThinkingSphinx::Test.index                                   # ???
-    get '/books', :params => {:query => 'Test Book'}             # ???
+    let(:book) { create(:book, title: 'Test Book') }
+
     it 'searching book in index' do
-      expect(response.body).to eq('Test Book')                   # include   ???
+      get '/books', :params => { :query => 'Test Book' }
+      expect(response.body).to include(:book)                   # include   ???
     end
   end
 end
