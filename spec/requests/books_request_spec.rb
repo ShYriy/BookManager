@@ -11,3 +11,20 @@ require 'rails_helper'
 #     end
 #   end
 # end
+
+RSpec.describe "BookIndex", type: :request do
+  describe "book index" do
+    # let(:book) { create(:book, title: book_title) }
+    # let(:book_title) { 'My Book Title' }
+    # it 'searches' do
+    #   expect(Book).to receive(:search).with(book_title).and_return [book]
+    #   get '/books', :params => { :query => book_title }
+    # end
+
+    # let(:book) { create(:book, title: 'Test Book') }
+    # it 'searching book in index' do
+    #   get '/books', :params => { :query => 'Test Book' }
+    #   expect(response.body).to include(:book)
+    # end
+  end
+end
